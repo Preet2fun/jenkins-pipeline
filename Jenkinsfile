@@ -27,7 +27,8 @@ pipeline{
 
                  stage('Test On Docker') {
                    agent {
-                       docker 'maven:3-alpine' 
+                         label "docker"
+                            { docker image 'maven:3-alpine' }
                          }
                    steps {
                           sh 'mvn --version'
