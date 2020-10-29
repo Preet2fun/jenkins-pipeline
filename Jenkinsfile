@@ -19,6 +19,7 @@ pipeline{
                     }
                     post {
                         always {
+                           echo "report creating for windows"
                             //junit "**/TEST-*.xml"
                         }
                     }
@@ -32,6 +33,7 @@ pipeline{
                     }
                     post {
                         always {
+                            echo "report creating for linux"
                             //junit "**/TEST-*.xml"
                         }
                     }
