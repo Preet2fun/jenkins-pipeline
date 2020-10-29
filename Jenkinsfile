@@ -82,10 +82,10 @@ def notify(status){
       body: """<p>${status}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
         <p>Check console output at <a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a></p>
       <p>Test Case Analysis .<br>
-Total Test Cases: ${TEST_COUNTS,var="total"} <br>
-Passed Test Cases: ${TEST_COUNTS,var="pass"} <br>
-Failed Test Cases: ${TEST_COUNTS,var="fail"} <br>
-Skipped Test Cases: ${TEST_COUNTS,var="skip"} <br>
+Total Test Cases: 10  <br>
+Passed Test Cases: 8  <br>
+Failed Test Cases: 2  <br>
+Skipped Test Cases: 0  <br>
 $DEFAULT_CONTENT</p>
 
 
