@@ -74,7 +74,7 @@ pipeline{
 
 
  }
-
+}
 def notify(status){
     emailext (
       to: "pratik.patel@motadata.com",
@@ -96,7 +96,5 @@ $DEFAULT_CONTENT</p>
 
 }
 
-
-}
 
 
