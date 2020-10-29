@@ -24,6 +24,17 @@ pipeline{
                         }
                     }
                 }
+
+                 stage('Test On Docker') {
+                   agent {
+                       docker { image 'maven:3-alpine' }
+                         }
+                   steps {
+                          sh 'mvn --version'
+                         }
+                }
+
+                
                 stage('Test On Linux') {
                     agent {
                         label "docker"
