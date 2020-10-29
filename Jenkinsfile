@@ -73,6 +73,32 @@ pipeline{
 
 
  }
+
+
+post {
+        always {
+            emailext body: '<!DOCTYPE html>
+                            <html>
+                            <body>
+
+                            <h1>Automation report </h1>
+
+<p>Test Case Analysis .<br>
+Total Test Cases: ${TEST_COUNTS,var="total"} <br>
+Passed Test Cases: ${TEST_COUNTS,var="pass"} <br>
+Failed Test Cases: ${TEST_COUNTS,var="fail"} <br>
+Skipped Test Cases: ${TEST_COUNTS,var="skip"} <br>
+$DEFAULT_CONTENT</p>
+
+
+<p>Please find Sonar report from below link <br>
+172.16.8.233:9000/dashboard/index/com.nms:motadata7 <br></p>
+
+</body>
+</html>'
+            , recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: '$DEFAULT_SUBJECT'
+        }
+    }
 }
 
 
