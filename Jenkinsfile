@@ -7,9 +7,9 @@ pipeline{
 
 
   stages{
-     notify('Started')
     stage('Create build output and archive it'){
       steps{
+            notify('Started')
             // Make the output directory.
             sh "mkdir -p output"
 
