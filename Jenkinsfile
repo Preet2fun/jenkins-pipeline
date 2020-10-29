@@ -86,7 +86,7 @@ Total Test Cases: 10  <br>
 Passed Test Cases: 8  <br>
 Failed Test Cases: 2  <br>
 Skipped Test Cases: 0  <br>
-$DEFAULT_CONTENT</p>
+</p>
 
 
 <p>Please find Sonar report from below link <br>
