@@ -12,27 +12,27 @@ pipeline{
             parallel {
                 stage('Test On Windows') {
                     agent {
-                        label "windows"
+                        label "docker"
                     }
                     steps {
-                        bat "run-tests.bat"
+                        echo "executing test cases on windows"
                     }
                     post {
                         always {
-                            junit "**/TEST-*.xml"
+                            //junit "**/TEST-*.xml"
                         }
                     }
                 }
                 stage('Test On Linux') {
                     agent {
-                        label "linux"
+                        label "docker"
                     }
                     steps {
-                        sh "run-tests.sh"
+                        echo "executing test cases on linux"
                     }
                     post {
                         always {
-                            junit "**/TEST-*.xml"
+                            //junit "**/TEST-*.xml"
                         }
                     }
                 }
