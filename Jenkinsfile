@@ -1,5 +1,5 @@
 pipeline{
-
+  notify('Started')
   agent any
   environment {
         FOO = "bar"
