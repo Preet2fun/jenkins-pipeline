@@ -77,7 +77,7 @@ pipeline{
 
 post {
         always {
-            emailext body: '<!DOCTYPE html>
+            emailext body: '''<!DOCTYPE html>
                             <html>
                             <body>
 
@@ -95,7 +95,7 @@ $DEFAULT_CONTENT</p>
 172.16.8.233:9000/dashboard/index/com.nms:motadata7 <br></p>
 
 </body>
-</html>'
+</html>'''
             , recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: '$DEFAULT_SUBJECT'
         }
     }
