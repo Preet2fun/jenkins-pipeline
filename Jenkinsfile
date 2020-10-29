@@ -65,6 +65,7 @@ pipeline{
 
                 withEnv(["BUILD_NUMBER=1"]) {
                     echo "BUILD_NUMBER = ${env.BUILD_NUMBER}" // prints "BUILD_NUMBER = 1"
+                    notify('Success')
                 }
             }
         }
@@ -74,16 +75,13 @@ pipeline{
 
  }
 
-
-post {
-        always {
-            emailext body: '''<!DOCTYPE html>
-                            <html>
-                            <body>
-
-                            <h1>Automation report </h1>
-
-<p>Test Case Analysis .<br>
+def notify(status){
+    emailext (
+      to: "pratik.patel@motadata.com",
+      subject: "${status}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+      body: """<p>${status}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+        <p>Check console output at <a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a></p>
+      <p>Test Case Analysis .<br>
 Total Test Cases: ${TEST_COUNTS,var="total"} <br>
 Passed Test Cases: ${TEST_COUNTS,var="pass"} <br>
 Failed Test Cases: ${TEST_COUNTS,var="fail"} <br>
@@ -93,12 +91,12 @@ $DEFAULT_CONTENT</p>
 
 <p>Please find Sonar report from below link <br>
 172.16.8.233:9000/dashboard/index/com.nms:motadata7 <br></p>
+""",
+    )
 
-</body>
-</html>'''
-            , recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: '$DEFAULT_SUBJECT'
-        }
-    }
+}
+
+
 }
 
 
