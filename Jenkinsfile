@@ -1,5 +1,4 @@
 pipeline{
-  notify('Started')
   agent any
   environment {
         FOO = "bar"
@@ -8,6 +7,7 @@ pipeline{
 
 
   stages{
+     notify('Started')
     stage('Create build output and archive it'){
       steps{
             // Make the output directory.
